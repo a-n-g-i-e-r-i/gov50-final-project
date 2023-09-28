@@ -1,7 +1,7 @@
 ---
 title: "Gov 50 Final Project"
-author: "Your Name Here"
-description: "My final project"
+author: "Tristan Angieri"
+description: "Psychedelic Research Project"
 output:
   distill::distill_article:
     self_contained: false
@@ -11,4 +11,4 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to...
+I am interested in exploring (a) research question(s) related to the human experience of psychedelics, particularly the affective and phenomenological effects. In terms of data sources, I believe the most likely ones may be Erowid.org, https://www.psychedelicdata.io/about%3FhsLang=en.html, or Fireside Project. My main concern is getting permission to use the data, and ensuring that it passes muster with the IRB.
