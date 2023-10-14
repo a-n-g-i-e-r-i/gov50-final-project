@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1472,7 +1472,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="index_files/header-attrs-2.24/header-attrs.js"></script>
+  <script src="index_files/header-attrs-2.25/header-attrs.js"></script>
   <script src="index_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="index_files/popper-2.6.0/popper.min.js"></script>
   <link href="index_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1519,6 +1519,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="d-article">
 <h2 id="project-thoughts">Project thoughts</h2>
 <p>I am interested in exploring (a) research question(s) related to the human experience of psychedelics, particularly the affective and phenomenological effects. In terms of data sources, I believe the most likely ones may be Erowid.org, <a href="https://www.psychedelicdata.io/about%3FhsLang=en.html" class="uri">https://www.psychedelicdata.io/about%3FhsLang=en.html</a>, or Fireside Project. My main concern is getting permission to use the data, and ensuring that it passes muster with the IRB.</p>
+<h2 id="proposal">Proposal</h2>
+<h3 id="research-question">Research Question</h3>
+<p>How does the age of initiation and frequency of LSD use differ between urban and rural areas in the U.S. in 2021, and how does this relate to the recency of LSD use?</p>
+<h3 id="hypothesis">Hypothesis</h3>
+<p>Individuals in urban areas might initiate LSD use at a younger age compared to those in rural areas due to increased exposure and accessibility. Furthermore, the frequency of LSD use in the past year and the recency of its use might be influenced by the age of initiation, with earlier initiation potentially leading to more frequent and recent use.</p>
+<h3 id="explanatory-variables-of-interest">Explanatory Variables of Interest:</h3>
+<h4 id="geographical-location-rural-vs.-urban">Geographical Location (Rural vs. Urban):</h4>
+<p>Variable: RURURB00
+Description: “RURAL OR URBAN SEGMENT”</p>
+<h4 id="age-of-initiation-of-lsd-use">Age of Initiation of LSD Use:</h4>
+<p>Variable: LSDAGE
+Description: “AGE WHEN FIRST USED LSD”
+Outcome Variables of Interest:</p>
+<h4 id="frequency-of-lsd-use-in-the-past-year">Frequency of LSD Use in the Past Year:</h4>
+<p>Variable: LSDYR
+Description: “RC-LSD - PAST YEAR USE”</p>
+<h4 id="recency-of-lsd-use">Recency of LSD Use:</h4>
+<p>Variable: LSDREC
+Description: “TIME SINCE LAST USED LSD”</p>
+<h3 id="control-variables">Control Variables:</h3>
+<h4 id="ever-used-lsd">Ever Used LSD:</h4>
+<p>Variable: LSDFLAG
+Description: “RC-LSD - EVER USED”</p>
+<h4 id="age-last-used-lsd">Age Last Used LSD:</h4>
+<p>Variable: LSDAGLST
+Description: “HOW OLD WERE YOU THE LAST TIME USED LSD”
+Expected Observations:</p>
+<p>If the data reveals that individuals from urban areas initiate LSD use at a younger age and have a higher frequency of use in the past year compared to those from rural areas, it would support the hypothesis.</p>
+<p>A significant positive relationship between the age of initiation (LSDAGE) and the recency of use (LSDREC) would suggest that earlier initiation leads to more recent use.</p>
+<h3 id="statistical-analysis">Statistical Analysis</h3>
+<p>A regression analysis will be conducted with LSDYR and LSDREC as the dependent variables, and RURURB00 and LSDAGE as the main independent variables. The regression will control for ever using LSD and the age of last use. This will allow us to understand the relationship between the age of initiation, geographical location, and the frequency and recency of LSD use.</p>
+<h3 id="data-source">Data Source</h3>
+<p>The data for this study will be sourced from the <a href="https://www.datafiles.samhsa.gov/dataset/national-survey-drug-use-and-health-2021-nsduh-2021-ds0001">“National Survey on Drug Use and Health 2021 (NSDUH-2021-DS0001)”</a>. The <a href="https://www.datafiles.samhsa.gov/sites/default/files/NSDUH_files/RDAS/RDAS_Comparability.xlsx">dataset’s specific variables</a> will provide a comprehensive perspective on the research question.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
