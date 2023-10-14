@@ -12,3 +12,59 @@ output:
 ## Project thoughts
 
 I am interested in exploring (a) research question(s) related to the human experience of psychedelics, particularly the affective and phenomenological effects. In terms of data sources, I believe the most likely ones may be Erowid.org, https://www.psychedelicdata.io/about%3FhsLang=en.html, or Fireside Project. My main concern is getting permission to use the data, and ensuring that it passes muster with the IRB.
+
+```{r}
+library(tidyverse)
+library(haven)
+
+dataframe <- read_sav("./GSS_spss/GSS7218_R3.sav")        
+dataframe.head()
+```
+
+## Proposal
+
+### Research Question
+How does the age of initiation and frequency of LSD use differ between urban and rural areas in the U.S. in 2021, and how does this relate to the recency of LSD use?
+
+### Hypothesis
+Individuals in urban areas might initiate LSD use at a younger age compared to those in rural areas due to increased exposure and accessibility. Furthermore, the frequency of LSD use in the past year and the recency of its use might be influenced by the age of initiation, with earlier initiation potentially leading to more frequent and recent use.
+
+### Explanatory Variables of Interest:
+
+#### Geographical Location (Rural vs. Urban):
+Variable: RURURB00
+Description: "RURAL OR URBAN SEGMENT"
+
+#### Age of Initiation of LSD Use:
+Variable: LSDAGE
+Description: "AGE WHEN FIRST USED LSD"
+Outcome Variables of Interest:
+
+#### Frequency of LSD Use in the Past Year:
+Variable: LSDYR
+Description: "RC-LSD - PAST YEAR USE"
+
+#### Recency of LSD Use:
+Variable: LSDREC
+Description: "TIME SINCE LAST USED LSD"
+
+### Control Variables:
+
+#### Ever Used LSD:
+Variable: LSDFLAG
+Description: "RC-LSD - EVER USED"
+
+#### Age Last Used LSD:
+Variable: LSDAGLST
+Description: "HOW OLD WERE YOU THE LAST TIME USED LSD"
+Expected Observations:
+
+If the data reveals that individuals from urban areas initiate LSD use at a younger age and have a higher frequency of use in the past year compared to those from rural areas, it would support the hypothesis.
+
+A significant positive relationship between the age of initiation (LSDAGE) and the recency of use (LSDREC) would suggest that earlier initiation leads to more recent use.
+
+### Statistical Analysis
+A regression analysis will be conducted with LSDYR and LSDREC as the dependent variables, and RURURB00 and LSDAGE as the main independent variables. The regression will control for ever using LSD and the age of last use. This will allow us to understand the relationship between the age of initiation, geographical location, and the frequency and recency of LSD use.
+
+### Data Source
+The data for this study will be sourced from the ["National Survey on Drug Use and Health 2021 (NSDUH-2021-DS0001)"](https://www.datafiles.samhsa.gov/dataset/national-survey-drug-use-and-health-2021-nsduh-2021-ds0001). The [dataset's specific variables](https://www.datafiles.samhsa.gov/sites/default/files/NSDUH_files/RDAS/RDAS_Comparability.xlsx) will provide a comprehensive perspective on the research question.
