@@ -13,14 +13,6 @@ output:
 
 I am interested in exploring (a) research question(s) related to the human experience of psychedelics, particularly the affective and phenomenological effects. In terms of data sources, I believe the most likely ones may be Erowid.org, https://www.psychedelicdata.io/about%3FhsLang=en.html, or Fireside Project. My main concern is getting permission to use the data, and ensuring that it passes muster with the IRB.
 
-```{r}
-library(tidyverse)
-library(haven)
-
-dataframe <- read_sav("./GSS_spss/GSS7218_R3.sav")        
-dataframe.head()
-```
-
 ## Proposal
 
 ### Research Question
