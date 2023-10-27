@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+*.Rproj
+NSDUH_2021.RData
