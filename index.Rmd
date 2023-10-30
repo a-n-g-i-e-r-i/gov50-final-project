@@ -62,8 +62,63 @@ A regression analysis will be conducted with LSDYR and LSDREC as the dependent v
 The data for this study will be sourced from the ["National Survey on Drug Use and Health 2021 (NSDUH-2021-DS0001)"](https://www.datafiles.samhsa.gov/dataset/national-survey-drug-use-and-health-2021-nsduh-2021-ds0001). The [dataset's specific variables](https://www.datafiles.samhsa.gov/sites/default/files/NSDUH_files/RDAS/RDAS_Comparability.xlsx) will provide a comprehensive perspective on the research question.
 
 ```{r}
+library(dplyr)
 nsduh <- load("./NSDUH_2021.RData")
 
-head(nsduh)
+#https://www.r-bloggers.com/2012/11/analyze-the-national-survey-on-drug-use-and-health-nsduh-with-r/
+#http://asdfree.com/national-study-on-drug-use-and-health-nsduh.html
+#https://github.com/ajdamico/lodown
+# nsduh_tib <- as_tibble(nsduh)
+# 
+nsduh
+```
+
+```{r}
+PUF2021_100622
+```
+
+```{r}
+lsd_use <- PUF2021_100622 |>
+  # slice_sample(
+  #   n = 10000
+  # ) |>
+  filter(
+    lsdage < 200
+  ) |>
+  select(
+    # population density
+    PDEN10,
+    # metro/non-metro
+    COUTYP4,
+    # age of first lsd age
+    lsdage,
+    # ever used lsd (1)
+    lsdflag
+  ) |>
+  filter(
+    lsdflag == 1
+  )
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+lsd_use_plot <- lsd_use |>
+  ggplot(
+    mapping = aes(
+      x = lsdage
+    )
+  ) +
+  geom_histogram(binwidth = 1) +
+  geom_vline(aes(xintercept = mean(lsdage)), color = "indianred") +
+  geom_vline(aes(xintercept = median(lsdage)), color = "dodgerblue") +
+  labs(
+    x = "LSD Age of First Use",
+    y = "Count"
+  )
+
+lsd_use_plot
 ```
 
