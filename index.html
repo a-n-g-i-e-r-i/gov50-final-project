@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","NSDUH-2021-DS0001-info-codebook.pdf"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1552,7 +1552,76 @@ Expected Observations:</p>
 <p>A regression analysis will be conducted with LSDYR and LSDREC as the dependent variables, and RURURB00 and LSDAGE as the main independent variables. The regression will control for ever using LSD and the age of last use. This will allow us to understand the relationship between the age of initiation, geographical location, and the frequency and recency of LSD use.</p>
 <h3 id="data-source">Data Source</h3>
 <p>The data for this study will be sourced from the <a href="https://www.datafiles.samhsa.gov/dataset/national-survey-drug-use-and-health-2021-nsduh-2021-ds0001">“National Survey on Drug Use and Health 2021 (NSDUH-2021-DS0001)”</a>. The <a href="https://www.datafiles.samhsa.gov/sites/default/files/NSDUH_files/RDAS/RDAS_Comparability.xlsx">dataset’s specific variables</a> will provide a comprehensive perspective on the research question.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span><span class='va'>nsduh</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span><span class='op'>(</span><span class='st'>"./NSDUH_2021.RData"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'>#https://www.r-bloggers.com/2012/11/analyze-the-national-survey-on-drug-use-and-health-nsduh-with-r/</span></span>
+<span><span class='co'>#http://asdfree.com/national-study-on-drug-use-and-health-nsduh.html</span></span>
+<span><span class='co'>#https://github.com/ajdamico/lodown</span></span>
+<span><span class='co'># nsduh_tib &lt;- as_tibble(nsduh)</span></span>
+<span><span class='co'># </span></span>
+<span><span class='va'>nsduh</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;.Traceback&quot;     &quot;PUF2021_100622&quot;</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># PUF2021_100622</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>lsd_use</span> <span class='op'>&lt;-</span> <span class='va'>PUF2021_100622</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='co'># slice_sample(</span></span>
+<span>  <span class='co'>#   n = 10000</span></span>
+<span>  <span class='co'># ) |&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span></span>
+<span>    <span class='va'>lsdage</span> <span class='op'>&lt;</span> <span class='fl'>200</span></span>
+<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span></span>
+<span>    <span class='co'># population density</span></span>
+<span>    <span class='va'>PDEN10</span>,</span>
+<span>    <span class='co'># metro/non-metro</span></span>
+<span>    <span class='va'>COUTYP4</span>,</span>
+<span>    <span class='co'># age of first lsd age</span></span>
+<span>    <span class='va'>lsdage</span>,</span>
+<span>    <span class='co'># ever used lsd (1)</span></span>
+<span>    <span class='va'>lsdflag</span></span>
+<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span></span>
+<span>    <span class='va'>lsdflag</span> <span class='op'>==</span> <span class='fl'>1</span></span>
+<span>  <span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>lsd_use_plot</span> <span class='op'>&lt;-</span> <span class='va'>lsd_use</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span></span>
+<span>    mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span></span>
+<span>      x <span class='op'>=</span> <span class='va'>lsdage</span></span>
+<span>    <span class='op'>)</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>lsdage</span><span class='op'>)</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='st'>"indianred"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>lsdage</span><span class='op'>)</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='st'>"dodgerblue"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span>    title <span class='op'>=</span> <span class='st'>"Age of First LSD Use"</span>,</span>
+<span>    x <span class='op'>=</span> <span class='st'>"Age"</span>,</span>
+<span>    y <span class='op'>=</span> <span class='st'>"Count"</span></span>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>lsd_use_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
