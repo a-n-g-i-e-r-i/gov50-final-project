@@ -115,10 +115,10 @@ lsd_use_plot <- lsd_use |>
   geom_vline(aes(xintercept = mean(lsdage)), color = "indianred") +
   geom_vline(aes(xintercept = median(lsdage)), color = "dodgerblue") +
   labs(
-    x = "LSD Age of First Use",
+    title = "Age of First LSD Use",
+    x = "Age",
     y = "Count"
   )
 
 lsd_use_plot
 ```
-
