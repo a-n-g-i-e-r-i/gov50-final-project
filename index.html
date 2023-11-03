@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","NSDUH-2021-DS0001-info-codebook.pdf"]}
+  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-10-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-7-1.png","index_files/figure-html5/unnamed-chunk-8-1.png","index_files/figure-html5/unnamed-chunk-9-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","NSDUH-2021-DS0001-info-codebook.pdf"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1568,19 +1568,34 @@ Expected Observations:</p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># PUF2021_100622</span></span></code></pre>
-</div>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>lsd_use</span> <span class='op'>&lt;-</span> <span class='va'>PUF2021_100622</span> <span class='op'>|&gt;</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># PUF2021_100622</span></span>
+<span><span class='va'>lsd_use</span> <span class='op'>&lt;-</span> <span class='va'>PUF2021_100622</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span></span>
+<span>    income_level <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span></span>
+<span>      <span class='va'>income</span> <span class='op'>==</span> <span class='fl'>1</span> <span class='op'>~</span> <span class='st'>"Less than $20,000"</span>,</span>
+<span>      <span class='va'>income</span> <span class='op'>==</span> <span class='fl'>2</span> <span class='op'>~</span> <span class='st'>"$20,000 - $49,999"</span>,</span>
+<span>      <span class='va'>income</span> <span class='op'>==</span> <span class='fl'>3</span> <span class='op'>~</span> <span class='st'>"$50,000 - $74,999"</span>,</span>
+<span>      <span class='va'>income</span> <span class='op'>==</span> <span class='fl'>4</span> <span class='op'>~</span> <span class='st'>"$75,000 or More"</span></span>
+<span>    <span class='op'>)</span>,</span>
+<span>    metro_level <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span></span>
+<span>      <span class='va'>COUTYP4</span> <span class='op'>==</span> <span class='fl'>1</span> <span class='op'>~</span> <span class='st'>"Large Metro"</span>,</span>
+<span>      <span class='va'>COUTYP4</span> <span class='op'>==</span> <span class='fl'>2</span> <span class='op'>~</span> <span class='st'>"Small Metro"</span>,</span>
+<span>      <span class='va'>COUTYP4</span> <span class='op'>==</span> <span class='fl'>3</span> <span class='op'>~</span> <span class='st'>"Non Metro"</span></span>
+<span>    <span class='op'>)</span></span>
+<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='co'># slice_sample(</span></span>
 <span>  <span class='co'>#   n = 10000</span></span>
 <span>  <span class='co'># ) |&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span></span>
-<span>    <span class='va'>lsdage</span> <span class='op'>&lt;</span> <span class='fl'>200</span></span>
-<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span></span>
+<span>    <span class='va'>snfamjev</span>,</span>
+<span>    <span class='co'># income level</span></span>
+<span>    <span class='va'>income_level</span>,</span>
+<span>    <span class='co'># metro level</span></span>
+<span>    <span class='va'>metro_level</span>,</span>
+<span>    <span class='co'># respondent age</span></span>
+<span>    <span class='va'>AGE3</span>,</span>
+<span>    <span class='co'># imputation revised gender</span></span>
+<span>    <span class='va'>irsex</span>,</span>
 <span>    <span class='co'># population density</span></span>
 <span>    <span class='va'>PDEN10</span>,</span>
 <span>    <span class='co'># metro/non-metro</span></span>
@@ -1588,11 +1603,22 @@ Expected Observations:</p>
 <span>    <span class='co'># age of first lsd age</span></span>
 <span>    <span class='va'>lsdage</span>,</span>
 <span>    <span class='co'># ever used lsd (1)</span></span>
-<span>    <span class='va'>lsdflag</span></span>
-<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span></span>
-<span>    <span class='va'>lsdflag</span> <span class='op'>==</span> <span class='fl'>1</span></span>
-<span>  <span class='op'>)</span></span></code></pre>
+<span>    <span class='va'>lsdflag</span>,</span>
+<span>    <span class='co'># RC-POVERTY LEVEL (% OF US CENSUS POVERTY THRESHOLD)</span></span>
+<span>    <span class='va'>POVERTY3</span>,</span>
+<span>    <span class='co'># MY RELIGIOUS BELIEFS INFLUENCE MY DECISIONS (1 or 0)</span></span>
+<span>    <span class='va'>snrldcsn</span>,</span>
+<span>    <span class='co'># lsd age last use</span></span>
+<span>    <span class='va'>lsdaglst</span>,</span>
+<span>    <span class='co'># year of last lsd use</span></span>
+<span>    <span class='va'>lsdylu</span>,</span>
+<span>    <span class='co'># total family income</span></span>
+<span>    <span class='va'>income</span></span>
+<span>  <span class='op'>)</span></span>
+<span>  <span class='co'># ) |&gt;</span></span>
+<span>  <span class='co'># filter(</span></span>
+<span>  <span class='co'>#   lsdflag == 1</span></span>
+<span>  <span class='co'># )</span></span></code></pre>
 </div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
@@ -1603,6 +1629,9 @@ Expected Observations:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>lsd_use_plot</span> <span class='op'>&lt;-</span> <span class='va'>lsd_use</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span></span>
+<span>    <span class='va'>lsdage</span> <span class='op'>&lt;</span> <span class='fl'>200</span></span>
+<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span></span>
 <span>    mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span></span>
 <span>      x <span class='op'>=</span> <span class='va'>lsdage</span></span>
@@ -1613,13 +1642,153 @@ Expected Observations:</p>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>lsdage</span><span class='op'>)</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='st'>"dodgerblue"</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
 <span>    title <span class='op'>=</span> <span class='st'>"Age of First LSD Use"</span>,</span>
-<span>    x <span class='op'>=</span> <span class='st'>"Age"</span>,</span>
+<span>    x <span class='op'>=</span> <span class='st'>"Age of respondent at first LSD use (years)"</span>,</span>
 <span>    y <span class='op'>=</span> <span class='st'>"Count"</span></span>
 <span>  <span class='op'>)</span></span>
 <span></span>
 <span><span class='va'>lsd_use_plot</span></span></code></pre>
 </div>
-<p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>fit_1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>snfamjev</span> <span class='op'>~</span> <span class='va'>lsdflag</span> , data <span class='op'>=</span> <span class='va'>lsd_use</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>fit_1</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>broom</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>term</span>, <span class='va'>estimate</span><span class='op'>)</span> <span class='op'>|&gt;</span>  </span>
+<span>  <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">23.79</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lsdflag</td>
+<td style="text-align: right;">-15.79</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>fit_2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>snrldcsn</span> <span class='op'>~</span> <span class='va'>lsdflag</span>, data <span class='op'>=</span> <span class='va'>lsd_use</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>fit_2</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>broom</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>term</span>, <span class='va'>estimate</span><span class='op'>)</span> <span class='op'>|&gt;</span>  </span>
+<span>  <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">24.89</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lsdflag</td>
+<td style="text-align: right;">-16.06</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>metro_lsd_plot</span> <span class='op'>&lt;-</span> <span class='va'>lsd_use</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>metro_level</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span></span>
+<span>    avg_lsdflag <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>lsdflag</span><span class='op'>)</span></span>
+<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://forcats.tidyverse.org/reference/fct_reorder.html'>fct_reorder</a></span><span class='op'>(</span><span class='va'>metro_level</span>, <span class='va'>avg_lsdflag</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>avg_lsdflag</span>, fill <span class='op'>=</span> <span class='va'>metro_level</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span>    title <span class='op'>=</span> <span class='st'>"Metro level and ever used LSD"</span>,</span>
+<span>    x <span class='op'>=</span> <span class='st'>"Metro level family income"</span>,</span>
+<span>    y <span class='op'>=</span> <span class='st'>"Avergae proportion of respondents who have ever used LSD (%)"</span></span>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>metro_lsd_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>income_lsd_plot</span> <span class='op'>&lt;-</span> <span class='va'>lsd_use</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>income_level</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span></span>
+<span>    avg_lsdage <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>lsdage</span><span class='op'>)</span>,</span>
+<span>    avg_lsdflag <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>lsdflag</span><span class='op'>)</span></span>
+<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://forcats.tidyverse.org/reference/fct_reorder.html'>fct_reorder</a></span><span class='op'>(</span><span class='va'>income_level</span>, <span class='va'>avg_lsdflag</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>avg_lsdflag</span>, fill <span class='op'>=</span> <span class='va'>income_level</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span>    title <span class='op'>=</span> <span class='st'>"Income level and ever used LSD"</span>,</span>
+<span>    x <span class='op'>=</span> <span class='st'>"Total family income"</span>,</span>
+<span>    y <span class='op'>=</span> <span class='st'>"Avergae proportion of respondents who have ever used LSD (%)"</span></span>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>income_lsd_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># based on poverty level, avg lsd use flag?</span></span>
+<span><span class='va'>income_lsd_age_plot</span> <span class='op'>&lt;-</span> <span class='va'>lsd_use</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span></span>
+<span>    <span class='va'>lsdage</span> <span class='op'>&lt;</span> <span class='fl'>200</span></span>
+<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>income_level</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span></span>
+<span>    avg_lsdage <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>lsdage</span><span class='op'>)</span></span>
+<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://forcats.tidyverse.org/reference/fct_reorder.html'>fct_reorder</a></span><span class='op'>(</span><span class='va'>income_level</span>, <span class='va'>avg_lsdage</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>avg_lsdage</span>, fill <span class='op'>=</span> <span class='va'>income_level</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span>    title <span class='op'>=</span> <span class='st'>"Income level and average age of first LSD use"</span>,</span>
+<span>    x <span class='op'>=</span> <span class='st'>"Total family income"</span>,</span>
+<span>    y <span class='op'>=</span> <span class='st'>"Avergae age of respondent when used LSD first (age)"</span></span>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>income_lsd_age_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>metro_lsd_plot</span> <span class='op'>&lt;-</span> <span class='va'>lsd_use</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span></span>
+<span>    <span class='va'>lsdage</span> <span class='op'>&lt;</span> <span class='fl'>200</span></span>
+<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>metro_level</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span></span>
+<span>    avg_lsdage <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>lsdage</span><span class='op'>)</span></span>
+<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://forcats.tidyverse.org/reference/fct_reorder.html'>fct_reorder</a></span><span class='op'>(</span><span class='va'>metro_level</span>, <span class='va'>avg_lsdage</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>avg_lsdage</span>, fill <span class='op'>=</span> <span class='va'>metro_level</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span>    title <span class='op'>=</span> <span class='st'>"County metro/nonmetro status level and average age of first LSD use"</span>,</span>
+<span>    x <span class='op'>=</span> <span class='st'>"COUNTY METRO/NONMETRO STATUS (2013 3-LEVEL)"</span>,</span>
+<span>    y <span class='op'>=</span> <span class='st'>"Average Age of respondent at first LSD use (years)"</span></span>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>metro_lsd_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
 </div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

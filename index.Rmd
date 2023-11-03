@@ -75,17 +75,33 @@ nsduh
 
 ```{r}
 # PUF2021_100622
-```
-
-```{r}
 lsd_use <- PUF2021_100622 |>
+  mutate(
+    income_level = case_when(
+      income == 1 ~ "Less than $20,000",
+      income == 2 ~ "$20,000 - $49,999",
+      income == 3 ~ "$50,000 - $74,999",
+      income == 4 ~ "$75,000 or More"
+    ),
+    metro_level = case_when(
+      COUTYP4 == 1 ~ "Large Metro",
+      COUTYP4 == 2 ~ "Small Metro",
+      COUTYP4 == 3 ~ "Non Metro"
+    )
+  ) |>
   # slice_sample(
   #   n = 10000
   # ) |>
-  filter(
-    lsdage < 200
-  ) |>
   select(
+    snfamjev,
+    # income level
+    income_level,
+    # metro level
+    metro_level,
+    # respondent age
+    AGE3,
+    # imputation revised gender
+    irsex,
     # population density
     PDEN10,
     # metro/non-metro
@@ -93,11 +109,22 @@ lsd_use <- PUF2021_100622 |>
     # age of first lsd age
     lsdage,
     # ever used lsd (1)
-    lsdflag
-  ) |>
-  filter(
-    lsdflag == 1
+    lsdflag,
+    # RC-POVERTY LEVEL (% OF US CENSUS POVERTY THRESHOLD)
+    POVERTY3,
+    # MY RELIGIOUS BELIEFS INFLUENCE MY DECISIONS (1 or 0)
+    snrldcsn,
+    # lsd age last use
+    lsdaglst,
+    # year of last lsd use
+    lsdylu,
+    # total family income
+    income
   )
+  # ) |>
+  # filter(
+  #   lsdflag == 1
+  # )
 ```
 
 ```{r}
@@ -106,6 +133,9 @@ library(tidyverse)
 
 ```{r}
 lsd_use_plot <- lsd_use |>
+  filter(
+    lsdage < 200
+  ) |>
   ggplot(
     mapping = aes(
       x = lsdage
@@ -116,9 +146,105 @@ lsd_use_plot <- lsd_use |>
   geom_vline(aes(xintercept = median(lsdage)), color = "dodgerblue") +
   labs(
     title = "Age of First LSD Use",
-    x = "Age",
+    x = "Age of respondent at first LSD use (years)",
     y = "Count"
   )
 
 lsd_use_plot
 ```
+
+```{r}
+fit_1 <- lm(snfamjev ~ lsdflag , data = lsd_use)
+
+fit_1 |>
+  broom::tidy() |>
+  select(term, estimate) |>  
+  knitr::kable(digits = 2)
+```
+
+```{r}
+fit_2 <- lm(snrldcsn ~ lsdflag, data = lsd_use)
+
+fit_2 |>
+  broom::tidy() |>
+  select(term, estimate) |>  
+  knitr::kable(digits = 2)
+```
+
+```{r}
+metro_lsd_plot <- lsd_use |>
+  group_by(metro_level) |>
+  summarize(
+    avg_lsdflag = mean(lsdflag)
+  ) |>
+  ggplot(mapping = aes(x = fct_reorder(metro_level, avg_lsdflag), y = avg_lsdflag, fill = metro_level)) +
+  geom_col() +
+  labs(
+    title = "Metro level and ever used LSD",
+    x = "Metro level family income",
+    y = "Avergae proportion of respondents who have ever used LSD (%)"
+  )
+
+metro_lsd_plot
+```
+
+```{r}
+income_lsd_plot <- lsd_use |>
+  group_by(income_level) |>
+  summarize(
+    avg_lsdage = mean(lsdage),
+    avg_lsdflag = mean(lsdflag)
+  ) |>
+  ggplot(mapping = aes(x = fct_reorder(income_level, avg_lsdflag), y = avg_lsdflag, fill = income_level)) +
+  geom_col() +
+  labs(
+    title = "Income level and ever used LSD",
+    x = "Total family income",
+    y = "Avergae proportion of respondents who have ever used LSD (%)"
+  )
+
+income_lsd_plot
+```
+
+```{r}
+# based on poverty level, avg lsd use flag?
+income_lsd_age_plot <- lsd_use |>
+  filter(
+    lsdage < 200
+  ) |>
+  group_by(income_level) |>
+  summarize(
+    avg_lsdage = mean(lsdage)
+  ) |>
+  ggplot(mapping = aes(x = fct_reorder(income_level, avg_lsdage), y = avg_lsdage, fill = income_level)) +
+  geom_col() +
+  labs(
+    title = "Income level and average age of first LSD use",
+    x = "Total family income",
+    y = "Avergae age of respondent when used LSD first (age)"
+  )
+
+income_lsd_age_plot
+```
+
+
+```{r}
+metro_lsd_plot <- lsd_use |>
+  filter(
+    lsdage < 200
+  ) |>
+  group_by(metro_level) |>
+  summarize(
+    avg_lsdage = mean(lsdage)
+  ) |>
+  ggplot(mapping = aes(x = fct_reorder(metro_level, avg_lsdage), y = avg_lsdage, fill = metro_level)) +
+  geom_col() +
+  labs(
+    title = "County metro/nonmetro status level and average age of first LSD use",
+    x = "COUNTY METRO/NONMETRO STATUS (2013 3-LEVEL)",
+    y = "Average Age of respondent at first LSD use (years)"
+  )
+
+metro_lsd_plot
+```
+
