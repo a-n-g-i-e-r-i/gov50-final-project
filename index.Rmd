@@ -116,7 +116,7 @@ lsd_use <- PUF2021_100622 |>
 ```{r}
 library(tidyverse)
 ```
-
+#### Age of First Hallucinogen Use
 This analysis reveals that the median age of first hallucinogen use among respondents is approximately 19 years, representing the midpoint of the distribution. Approximately 25% of respondents start using hallucinogens before or at age 17 (Q1), while another quarter initiate use at or after age 21 (Q3), indicating quartile boundaries. The mean age of initiation, around 19.65 years, closely aligns with the median, implying a relatively symmetrical distribution. The histogram closely resembles a normal distribution with a slight right skew, indicating that most respondents commence using hallucinogens in their late teens or early twenties, with a smaller fraction initiating use at older ages.
 ```{r}
 filtered_lsd_use <- lsd_use |>
@@ -148,7 +148,7 @@ lsd_use_plot <- filtered_lsd_use |>
 
 lsd_use_plot
 ```
-
+#### Age of First Hallucinogen Use by Metrolevel
 The boxplot analysis reveals variations in the age of first hallucinogen use across different metro level areas. In Large Metro areas, the median age of initiation is around 19 years, while in Non Metro and Small Metro areas, it's about 18 years. The first quartile age (25th percentile) indicates that a quarter of individuals in Non Metro areas start using hallucinogens at a younger age, at approximately 16 years, compared to the other groups. The third quartile age (75th percentile) shows that the majority in all three areas initiate use by their early twenties, with Large Metro areas slightly later at around 22 years. These findings highlight regional differences in the timing of first hallucinogen use, with individuals in Large Metro areas tending to initiate use slightly later on average.
 ```{r}
 lsd_use_box_plot <- filtered_lsd_use |>
@@ -181,7 +181,7 @@ summary_stats <- lsd_use |>
 
 summary_stats
 ```
-
+#### Hallucinogen lifetime use and metro level
 Whether a respondent has ever taken psychedelics (hallucevr) does not appear to have a significant impact on the type of county (COUTYP4) in which they reside. The coefficient for hallucevr is almost zero, indicating that there is virtually no association between these two variables in the model.
 ```{r}
 fit_2 <- lm(COUTYP4 ~ hallucevr, data = lsd_use)
