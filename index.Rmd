@@ -117,28 +117,72 @@ lsd_use <- PUF2021_100622 |>
 library(tidyverse)
 ```
 
+This analysis reveals that the median age of first hallucinogen use among respondents is approximately 19 years, representing the midpoint of the distribution. Approximately 25% of respondents start using hallucinogens before or at age 17 (Q1), while another quarter initiate use at or after age 21 (Q3), indicating quartile boundaries. The mean age of initiation, around 19.65 years, closely aligns with the median, implying a relatively symmetrical distribution. The histogram closely resembles a normal distribution with a slight right skew, indicating that most respondents commence using hallucinogens in their late teens or early twenties, with a smaller fraction initiating use at older ages.
 ```{r}
-lsd_use_plot <- lsd_use |>
+filtered_lsd_use <- lsd_use |>
+  filter(hallucage < 69)
+
+summary_stats <- filtered_lsd_use |>
+  summarise(
+    Median = median(hallucage),
+    Q1 = quantile(hallucage, 0.25),
+    Q3 = quantile(hallucage, 0.75),
+    Mean = mean(hallucage),
+    SD = sd(hallucage),
+    Min = min(hallucage),
+    Max = max(hallucage)
+  )
+
+summary_stats
+
+lsd_use_plot <- filtered_lsd_use |>
+  ggplot(mapping = aes(x = hallucage)) +
+  geom_histogram(binwidth = 1) +
+  labs(
+    title = "Age of First Hallucinogen Use",
+    x = "Age of respondent at first Hallucinogen use (years)",
+    y = "Count"
+  ) +
+  geom_vline(aes(xintercept = mean(hallucage)), color = "indianred") +
+  geom_vline(aes(xintercept = median(hallucage)), color = "dodgerblue")
+
+lsd_use_plot
+```
+
+The boxplot analysis reveals variations in the age of first hallucinogen use across different metro level areas. In Large Metro areas, the median age of initiation is around 19 years, while in Non Metro and Small Metro areas, it's about 18 years. The first quartile age (25th percentile) indicates that a quarter of individuals in Non Metro areas start using hallucinogens at a younger age, at approximately 16 years, compared to the other groups. The third quartile age (75th percentile) shows that the majority in all three areas initiate use by their early twenties, with Large Metro areas slightly later at around 22 years. These findings highlight regional differences in the timing of first hallucinogen use, with individuals in Large Metro areas tending to initiate use slightly later on average.
+```{r}
+lsd_use_box_plot <- filtered_lsd_use |>
   filter(
     hallucage < 69
   ) |>
   ggplot(
     mapping = aes(
-      x = hallucage
+      x = hallucage,
+      fill = metro_level
     )
   ) +
-  geom_histogram(binwidth = 1) +
-  geom_vline(aes(xintercept = mean(hallucage)), color = "indianred") +
-  geom_vline(aes(xintercept = median(hallucage)), color = "dodgerblue") +
+geom_boxplot() +
   labs(
-    title = "Age of First Hallucinogen Use",
-    x = "Age of respondent at first Hallucinogen use (years)",
-    y = "Count"
+    title = "Age of First Hallucinogen Use by Metro Level",
+    x = "Metro Level",
+    y = "Age at first Hallucinogen use (years)"
   )
 
-lsd_use_plot
+lsd_use_box_plot
+
+summary_stats <- lsd_use |>
+  filter(hallucage < 69) |>
+  group_by(metro_level) |>
+  summarize(
+    Median = median(hallucage),
+    Q1 = quantile(hallucage, 0.25),
+    Q3 = quantile(hallucage, 0.75)
+  )
+
+summary_stats
 ```
 
+Whether a respondent has ever taken psychedelics (hallucevr) does not appear to have a significant impact on the type of county (COUTYP4) in which they reside. The coefficient for hallucevr is almost zero, indicating that there is virtually no association between these two variables in the model.
 ```{r}
 fit_2 <- lm(COUTYP4 ~ hallucevr, data = lsd_use)
 
@@ -149,10 +193,7 @@ fit_2 |>
 ```
 
 ```{r}
-metro_hall_plot <- lsd_use |>
-  filter(
-    hallucage < 69
-  ) |>
+metro_hall_plot <- filtered_lsd_use |>
   group_by(metro_level) |>
   summarize(
     avg_hallucage = mean(hallucage)
