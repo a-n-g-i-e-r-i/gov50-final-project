@@ -191,6 +191,7 @@ The regression analysis exploring the impact of lifetime hallucinogen use on the
 The intercept of the regression, at 1.73, indicates the baseline level for the dependent variable (COUTYP4), which in this context could suggest the average metro/non-metro status when hallucinogen use is not considered. However, without further context on the coding of the COUTYP4 variable, the interpretation of this intercept may vary.
 
 This result challenges common perceptions about the urban-rural divide in drug use patterns and highlights the need for a more nuanced understanding of the factors influencing hallucinogen use across different communities.
+
 ### Age of First Hallucinogen Use and Recent Use Probability
 
 ```{r}
