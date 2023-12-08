@@ -1517,41 +1517,35 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h2 id="project-thoughts">Project thoughts</h2>
-<p>I am interested in exploring (a) research question(s) related to the human experience of psychedelics, particularly the affective and phenomenological effects. In terms of data sources, I believe the most likely ones may be Erowid.org, <a href="https://www.psychedelicdata.io/about%3FhsLang=en.html" class="uri">https://www.psychedelicdata.io/about%3FhsLang=en.html</a>, or Fireside Project. My main concern is getting permission to use the data, and ensuring that it passes muster with the IRB.</p>
+<h2 id="introduction-context-and-relevance">Introduction: Context and Relevance</h2>
+<p>Exploring the patterns of psychedelic use offers critical insights into the human experience with these substances. This study aims to compare the age of initiation and frequency of psychedelic use between urban and rural areas in the U.S. in 2021. Understanding these patterns is pivotal for grasping the broader societal and psychological impacts of psychedelics, especially given the differences in accessibility and cultural attitudes towards these substances in various settings.</p>
 <h2 id="proposal">Proposal</h2>
 <h3 id="research-question">Research Question</h3>
-<p>How does the age of initiation and frequency of LSD use differ between urban and rural areas in the U.S. in 2021, and how does this relate to the recency of LSD use?</p>
+<p>How do the age of initiation and frequency of psychedelic use differ between urban and rural areas in the U.S. in 2021, and how do these factors relate to the recency of use?</p>
 <h3 id="hypothesis">Hypothesis</h3>
-<p>Individuals in urban areas might initiate LSD use at a younger age compared to those in rural areas due to increased exposure and accessibility. Furthermore, the frequency of LSD use in the past year and the recency of its use might be influenced by the age of initiation, with earlier initiation potentially leading to more frequent and recent use.</p>
+<p>It is hypothesized that individuals in urban areas may initiate psychedelic use at a younger age than those in rural areas due to factors such as increased exposure and accessibility. Additionally, the frequency and recency of psychedelic use might correlate with the age of initiation, with earlier initiation potentially leading to more frequent use.</p>
 <h3 id="explanatory-variables-of-interest">Explanatory Variables of Interest:</h3>
 <h4 id="geographical-location-rural-vs.-urban">Geographical Location (Rural vs. Urban):</h4>
 <p>Variable: RURURB00
 Description: “RURAL OR URBAN SEGMENT”</p>
-<h4 id="age-of-initiation-of-lsd-use">Age of Initiation of LSD Use:</h4>
-<p>Variable: LSDAGE
-Description: “AGE WHEN FIRST USED LSD”
-Outcome Variables of Interest:</p>
-<h4 id="frequency-of-lsd-use-in-the-past-year">Frequency of LSD Use in the Past Year:</h4>
-<p>Variable: LSDYR
-Description: “RC-LSD - PAST YEAR USE”</p>
-<h4 id="recency-of-lsd-use">Recency of LSD Use:</h4>
-<p>Variable: LSDREC
-Description: “TIME SINCE LAST USED LSD”</p>
-<h3 id="control-variables">Control Variables:</h3>
-<h4 id="ever-used-lsd">Ever Used LSD:</h4>
-<p>Variable: LSDFLAG
-Description: “RC-LSD - EVER USED”</p>
-<h4 id="age-last-used-lsd">Age Last Used LSD:</h4>
-<p>Variable: LSDAGLST
-Description: “HOW OLD WERE YOU THE LAST TIME USED LSD”
-Expected Observations:</p>
-<p>If the data reveals that individuals from urban areas initiate LSD use at a younger age and have a higher frequency of use in the past year compared to those from rural areas, it would support the hypothesis.</p>
-<p>A significant positive relationship between the age of initiation (LSDAGE) and the recency of use (LSDREC) would suggest that earlier initiation leads to more recent use.</p>
+<h4 id="age-of-initiation-of-hallucinogen-use">Age of Initiation of Hallucinogen Use:</h4>
+<p>Variable: HALLUCAGE
+Description: “AGE WHEN FIRST USED HALLUCINOGENS”</p>
+<h4 id="frequency-and-recency-of-hallucinogen-use">Frequency and Recency of Hallucinogen Use:</h4>
+<p>Variables: HALLUCYR (Frequency), HALLUCREC (Recency)
+Descriptions: “HALLUCINOGEN - PAST YEAR USE” and “TIME SINCE LAST USED HALLUCINOGEN”</p>
+<h4 id="control-variables">Control Variables:</h4>
+<p>Ever Used Hallucinogens: HALLUCFLAG
+Age Last Used Hallucinogens: HALLUCAGLST</p>
+<h3 id="expected-observations">Expected Observations</h3>
+<p>If data shows that individuals from urban areas initiate hallucinogen use at a younger age with higher frequency and recency compared to those from rural areas, it would support the hypothesis.</p>
 <h3 id="statistical-analysis">Statistical Analysis</h3>
-<p>A regression analysis will be conducted with LSDYR and LSDREC as the dependent variables, and RURURB00 and LSDAGE as the main independent variables. The regression will control for ever using LSD and the age of last use. This will allow us to understand the relationship between the age of initiation, geographical location, and the frequency and recency of LSD use.</p>
+<p>A regression analysis will be conducted with frequency and recency of hallucinogen use as dependent variables, and geographical location and age of initiation as main independent variables. The regression will control for factors such as ever using hallucinogens and age of last use.</p>
 <h3 id="data-source">Data Source</h3>
-<p>The data for this study will be sourced from the <a href="https://www.datafiles.samhsa.gov/dataset/national-survey-drug-use-and-health-2021-nsduh-2021-ds0001">“National Survey on Drug Use and Health 2021 (NSDUH-2021-DS0001)”</a>. The <a href="https://www.datafiles.samhsa.gov/sites/default/files/NSDUH_files/RDAS/RDAS_Comparability.xlsx">dataset’s specific variables</a> will provide a comprehensive perspective on the research question.</p>
+<p>The data for this study is sourced from the <a href="https://www.datafiles.samhsa.gov/dataset/national-survey-drug-use-and-health-2021-nsduh-2021-ds0001">“National Survey on Drug Use and Health 2021 (NSDUH-2021-DS0001)”</a>.</p>
+<p>The National Survey on Drug Use and Health (NSDUH) is an annual survey conducted in the United States. It is one of the most comprehensive sources of data on substance use, including hallucinogens, and covers a wide demographic. NSDUH’s methodology includes interviews with individuals aged 12 and older and spans various topics from frequency of drug use to mental health. This dataset is particularly suitable for this study as it provides detailed information on hallucinogen use patterns across different geographical locations. The richness and granularity of the data make it ideal for examining the nuances of urban and rural differences in psychedelic experiences.</p>
+<p>The <a href="https://www.datafiles.samhsa.gov/sites/default/files/NSDUH_files/RDAS/RDAS_Comparability.xlsx">dataset’s specific variables</a> will provide a comprehensive perspective on the research question.</p>
+<h2 id="analysis">Analysis</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
@@ -1569,7 +1563,7 @@ Expected Observations:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># PUF2021_100622</span></span>
-<span><span class='va'>lsd_use</span> <span class='op'>&lt;-</span> <span class='va'>PUF2021_100622</span> <span class='op'>|&gt;</span></span>
+<span><span class='va'>halluc_use</span> <span class='op'>&lt;-</span> <span class='va'>PUF2021_100622</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span></span>
 <span>    metro_level <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span></span>
 <span>      <span class='va'>COUTYP4</span> <span class='op'>==</span> <span class='fl'>1</span> <span class='op'>~</span> <span class='st'>"Large Metro"</span>,</span>
@@ -1586,20 +1580,10 @@ Expected Observations:</p>
 <span>    <span class='va'>PDEN10</span>,</span>
 <span>    <span class='co'># metro/non-metro</span></span>
 <span>    <span class='va'>COUTYP4</span>,</span>
-<span>    <span class='co'># age of first lsd age</span></span>
-<span>    <span class='va'>lsdage</span>,</span>
-<span>    <span class='co'># ever used lsd (1)</span></span>
-<span>    <span class='va'>lsdflag</span>,</span>
-<span>    <span class='co'># lsd age last use</span></span>
-<span>    <span class='va'>lsdaglst</span>,</span>
-<span>    <span class='co'># year of last lsd use</span></span>
-<span>    <span class='va'>lsdylu</span>,</span>
-<span>    <span class='co'># TIME SINCE LAST USED LSD</span></span>
-<span>    <span class='va'>lsdrec</span>,</span>
-<span>    <span class='co'># Ever used psilocybin</span></span>
-<span>    <span class='va'>psilcyever</span>,</span>
-<span>    <span class='co'># ever used psilocybin</span></span>
-<span>    <span class='va'>psilcy</span>,</span>
+<span>    <span class='co'># ever used hallucinogens</span></span>
+<span>    <span class='va'>hallucflag</span>,</span>
+<span>    <span class='co'># PAST YEAR USE (0 did not use, 1 did use)</span></span>
+<span>    <span class='va'>hallucyr</span>,</span>
 <span>    <span class='co'># ever used hallucinogens (DMTAMTFXY, ECSTMOLLY, HALLUCOTH, KETMINESK, LSD, MESC, PCP, PEYOTE, PSILCY, SALVIADIV)</span></span>
 <span>    <span class='va'>hallucevr</span>,</span>
 <span>    <span class='co'># age of first hallucage</span></span>
@@ -1612,14 +1596,13 @@ Expected Observations:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
-<h4 id="age-of-first-hallucinogen-use">Age of First Hallucinogen Use</h4>
-This analysis reveals that the median age of first hallucinogen use among respondents is approximately 19 years, representing the midpoint of the distribution. Approximately 25% of respondents start using hallucinogens before or at age 17 (Q1), while another quarter initiate use at or after age 21 (Q3), indicating quartile boundaries. The mean age of initiation, around 19.65 years, closely aligns with the median, implying a relatively symmetrical distribution. The histogram closely resembles a normal distribution with a slight right skew, indicating that most respondents commence using hallucinogens in their late teens or early twenties, with a smaller fraction initiating use at older ages.
+<h3 id="age-of-first-hallucinogen-use">Age of First Hallucinogen Use</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>filtered_lsd_use</span> <span class='op'>&lt;-</span> <span class='va'>lsd_use</span> <span class='op'>|&gt;</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>filtered_halluc_use</span> <span class='op'>&lt;-</span> <span class='va'>halluc_use</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>hallucage</span> <span class='op'>&lt;</span> <span class='fl'>69</span><span class='op'>)</span></span>
 <span></span>
-<span><span class='va'>summary_stats</span> <span class='op'>&lt;-</span> <span class='va'>filtered_lsd_use</span> <span class='op'>|&gt;</span></span>
+<span><span class='va'>summary_stats</span> <span class='op'>&lt;-</span> <span class='va'>filtered_halluc_use</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span></span>
 <span>    Median <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>hallucage</span><span class='op'>)</span>,</span>
 <span>    Q1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>hallucage</span>, <span class='fl'>0.25</span><span class='op'>)</span>,</span>
@@ -1635,7 +1618,7 @@ This analysis reveals that the median age of first hallucinogen use among respon
 <pre><code>  Median Q1 Q3     Mean       SD Min Max
 1     19 17 21 19.65161 5.060786   1  68</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>lsd_use_plot</span> <span class='op'>&lt;-</span> <span class='va'>filtered_lsd_use</span> <span class='op'>|&gt;</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>halluc_use_plot</span> <span class='op'>&lt;-</span> <span class='va'>filtered_halluc_use</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>hallucage</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
@@ -1646,15 +1629,15 @@ This analysis reveals that the median age of first hallucinogen use among respon
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>hallucage</span><span class='op'>)</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='st'>"indianred"</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>hallucage</span><span class='op'>)</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='st'>"dodgerblue"</span><span class='op'>)</span></span>
 <span></span>
-<span><span class='va'>lsd_use_plot</span></span></code></pre>
+<span><span class='va'>halluc_use_plot</span></span></code></pre>
 </div>
 <p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
 </div>
-<h4 id="age-of-first-hallucinogen-use-by-metrolevel">Age of First Hallucinogen Use by Metrolevel</h4>
-The boxplot analysis reveals variations in the age of first hallucinogen use across different metro level areas. In Large Metro areas, the median age of initiation is around 19 years, while in Non Metro and Small Metro areas, it’s about 18 years. The first quartile age (25th percentile) indicates that a quarter of individuals in Non Metro areas start using hallucinogens at a younger age, at approximately 16 years, compared to the other groups. The third quartile age (75th percentile) shows that the majority in all three areas initiate use by their early twenties, with Large Metro areas slightly later at around 22 years. These findings highlight regional differences in the timing of first hallucinogen use, with individuals in Large Metro areas tending to initiate use slightly later on average.
+<p>This analysis reveals that the median age of first hallucinogen use among respondents is approximately 19 years, representing the midpoint of the distribution. Approximately 25% of respondents start using hallucinogens before or at age 17 (Q1), while another quarter initiate use at or after age 21 (Q3), indicating quartile boundaries. The mean age of initiation, around 19.65 years, closely aligns with the median, implying a relatively symmetrical distribution. The histogram closely resembles a normal distribution with a slight right skew, indicating that most respondents commence using hallucinogens in their late teens or early twenties, with a smaller fraction initiating use at older ages.
+### Age of First Hallucinogen Use by Metrolevel</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>lsd_use_box_plot</span> <span class='op'>&lt;-</span> <span class='va'>filtered_lsd_use</span> <span class='op'>|&gt;</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>halluc_use_box_plot</span> <span class='op'>&lt;-</span> <span class='va'>filtered_halluc_use</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span></span>
 <span>    <span class='va'>hallucage</span> <span class='op'>&lt;</span> <span class='fl'>69</span></span>
 <span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
@@ -1671,11 +1654,11 @@ The boxplot analysis reveals variations in the age of first hallucinogen use acr
 <span>    y <span class='op'>=</span> <span class='st'>"Age at first Hallucinogen use (years)"</span></span>
 <span>  <span class='op'>)</span></span>
 <span></span>
-<span><span class='va'>lsd_use_box_plot</span></span></code></pre>
+<span><span class='va'>halluc_use_box_plot</span></span></code></pre>
 </div>
 <img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" />
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>summary_stats</span> <span class='op'>&lt;-</span> <span class='va'>lsd_use</span> <span class='op'>|&gt;</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>summary_stats</span> <span class='op'>&lt;-</span> <span class='va'>halluc_use</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>hallucage</span> <span class='op'>&lt;</span> <span class='fl'>69</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>metro_level</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span></span>
@@ -1693,11 +1676,11 @@ The boxplot analysis reveals variations in the age of first hallucinogen use acr
 2 Non Metro       18    16    21
 3 Small Metro     18    17    21</code></pre>
 </div>
-<h4 id="hallucinogen-lifetime-use-and-metro-level">Hallucinogen lifetime use and metro level</h4>
-Whether a respondent has ever taken psychedelics (hallucevr) does not appear to have a significant impact on the type of county (COUTYP4) in which they reside. The coefficient for hallucevr is almost zero, indicating that there is virtually no association between these two variables in the model.
+<p>The boxplot analysis reveals variations in the age of first hallucinogen use across different metro level areas. In Large Metro areas, the median age of initiation is around 19 years, while in Non Metro and Small Metro areas, it’s about 18 years. The first quartile age (25th percentile) indicates that a quarter of individuals in Non Metro areas start using hallucinogens at a younger age, at approximately 16 years, compared to the other groups. The third quartile age (75th percentile) shows that the majority in all three areas initiate use by their early twenties, with Large Metro areas slightly later at around 22 years. These findings highlight regional differences in the timing of first hallucinogen use, with individuals in Large Metro areas tending to initiate use slightly later on average.</p>
+<h3 id="hallucinogen-lifetime-use-and-metro-level">Hallucinogen lifetime use and metro level</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>fit_2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>COUTYP4</span> <span class='op'>~</span> <span class='va'>hallucevr</span>, data <span class='op'>=</span> <span class='va'>lsd_use</span><span class='op'>)</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>fit_2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>COUTYP4</span> <span class='op'>~</span> <span class='va'>hallucevr</span>, data <span class='op'>=</span> <span class='va'>halluc_use</span><span class='op'>)</span></span>
 <span></span>
 <span><span class='va'>fit_2</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'>broom</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
@@ -1723,26 +1706,74 @@ Whether a respondent has ever taken psychedelics (hallucevr) does not appear to 
 </tbody>
 </table>
 </div>
+<p>The regression analysis exploring the impact of lifetime hallucinogen use on the type of county in which respondents reside yielded an interesting result. The coefficient for hallucevr, representing lifetime hallucinogen use, is 0.00. This implies that there is no statistically significant association between whether a respondent has ever used hallucinogens and the metro/non-metro status of their county. In other words, lifetime hallucinogen use does not appear to be a determining factor in differentiating respondents living in urban versus rural areas. This finding suggests that the use of hallucinogens is similarly prevalent across different types of geographical locations, contrary to what might be expected considering potential differences in accessibility and exposure.</p>
+<p>The intercept of the regression, at 1.73, indicates the baseline level for the dependent variable (COUTYP4), which in this context could suggest the average metro/non-metro status when hallucinogen use is not considered. However, without further context on the coding of the COUTYP4 variable, the interpretation of this intercept may vary.</p>
+<p>This result challenges common perceptions about the urban-rural divide in drug use patterns and highlights the need for a more nuanced understanding of the factors influencing hallucinogen use across different communities.
+### Age of First Hallucinogen Use and Recent Use Probability</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>metro_hall_plot</span> <span class='op'>&lt;-</span> <span class='va'>filtered_lsd_use</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>metro_level</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span></span>
-<span>    avg_hallucage <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>hallucage</span><span class='op'>)</span></span>
-<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://forcats.tidyverse.org/reference/fct_reorder.html'>fct_reorder</a></span><span class='op'>(</span><span class='va'>metro_level</span>, <span class='va'>avg_hallucage</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>avg_hallucage</span>, fill <span class='op'>=</span> <span class='va'>metro_level</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
-<span>    title <span class='op'>=</span> <span class='st'>"County metro/nonmetro status level and average age of first Hallucinogen use"</span>,</span>
-<span>    x <span class='op'>=</span> <span class='st'>"COUNTY METRO/NONMETRO STATUS (2013 3-LEVEL)"</span>,</span>
-<span>    y <span class='op'>=</span> <span class='st'>"Average Age of respondent at first Hallucinogen use (years)"</span></span>
-<span>  <span class='op'>)</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>halluc_use_filtered</span> <span class='op'>&lt;-</span> <span class='va'>halluc_use</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>hallucage</span> <span class='op'>&lt;</span> <span class='fl'>69</span><span class='op'>)</span></span>
 <span></span>
-<span><span class='va'>metro_hall_plot</span></span></code></pre>
+<span><span class='va'>logit_model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>hallucyr</span> <span class='op'>~</span> <span class='va'>hallucage</span>, data <span class='op'>=</span> <span class='va'>halluc_use_filtered</span>, family <span class='op'>=</span> <span class='st'>"binomial"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>logit_model</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+Call:
+glm(formula = hallucyr ~ hallucage, family = &quot;binomial&quot;, data = halluc_use_filtered)
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -1.386519   0.099713 -13.905   &lt;2e-16 ***
+hallucage    0.008313   0.004880   1.704   0.0884 .  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 9542.2  on 8897  degrees of freedom
+Residual deviance: 9539.3  on 8896  degrees of freedom
+AIC: 9543.3
+
+Number of Fisher Scoring iterations: 4</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>halluc_use_filtered</span><span class='op'>$</span><span class='va'>predicted_prob</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>logit_model</span>, type <span class='op'>=</span> <span class='st'>"response"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>halluc_use_filtered</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>hallucage</span>, y <span class='op'>=</span> <span class='va'>predicted_prob</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span></span>
+<span>    method <span class='op'>=</span> <span class='st'>"glm"</span>,</span>
+<span>    method.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"binomial"</span><span class='op'>)</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Probability of Hallucinogen Use in the Past Year by Age of First Use"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Age of First Use"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Predicted Probability of Use in Past Year"</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="index_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="analysis-overview">Analysis Overview</h1>
+<p>The logistic regression model was fitted to examine the relationship between the age at first use of hallucinogens (<code>hallucage</code>) and the probability of using hallucinogens in the past year (<code>hallucyr</code>). Logistic regression was chosen for this analysis because the dependent variable, <code>hallucyr</code>, is binary (0 for did not use, 1 for did use), which aligns well with the logistic model’s ability to predict the probability of a binary outcome based on an independent variable.</p>
+<h2 id="regression-results">Regression Results</h2>
+<h3 id="coefficients">Coefficients:</h3>
+<ul>
+<li><strong>Intercept</strong>: The intercept (<code>-1.386519</code>) represents the log odds of using hallucinogens in the past year when the age of first use (<code>hallucage</code>) is 0. This is a theoretical baseline as the age of first use cannot be zero.</li>
+<li><strong>Age of First Use (<code>hallucage</code>)</strong>: The coefficient for the age of first use is <code>0.008313</code>. This value indicates the change in the log odds of using hallucinogens in the past year for each additional year delay in the age of first use.</li>
+</ul>
+<h3 id="statistical-significance">Statistical Significance:</h3>
+<ul>
+<li>The p-value for the age of first use is <code>0.0884</code>, marginally above the conventional threshold of <code>0.05</code> for statistical significance. This suggests a trend towards significance but does not provide strong evidence to conclusively state that the age of first hallucinogen use is a predictor of use in the past year.</li>
+</ul>
+<h3 id="model-fit">Model Fit:</h3>
+<ul>
+<li><strong>Null Deviance vs. Residual Deviance</strong>: The null deviance is reduced from <code>9542.2</code> to <code>9539.3</code> in the residual deviance with the inclusion of the <code>hallucage</code> variable, indicating that the model with the predictor provides a slightly better fit than the null model (a model with no predictors).</li>
+<li><strong>AIC (Akaike Information Criterion)</strong>: The AIC of the model is <code>9543.3</code>. Lower AIC values generally indicate a better model, but without a comparative model, this value serves as a baseline for model comparison.</li>
+</ul>
+<h2 id="interpretation">Interpretation</h2>
+<p>The positive coefficient for <code>hallucage</code> suggests that there is a slight increase in the probability of using hallucinogens in the past year with each additional year in the age of first use. However, since the result is not statistically significant at the <code>0.05</code> level, this finding should be interpreted with caution. The marginal significance indicates that while there may be a relationship between the age of first use and the likelihood of using hallucinogens in the past year, the evidence is not strong enough to make a definitive conclusion. It is possible that other factors not included in the model might influence this relationship. The relatively small change in deviance suggests that the age of first use, while potentially informative, does not strongly predict hallucinogen use in the past year by itself.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>In conclusion, this analysis provides some indication that the age at which individuals first use hallucinogens might have a marginal effect on their likelihood of using hallucinogens in the most recent year. However, the evidence is not strong enough to assert a definitive causal relationship. Further research, possibly incorporating additional variables and a larger sample size, could provide more insights into this relationship.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

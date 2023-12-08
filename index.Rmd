@@ -5,62 +5,63 @@ description: "Psychedelic Research Project"
 output:
   distill::distill_article:
     self_contained: false
----
+---   
 
 
 
-## Project thoughts
+## Introduction: Context and Relevance
 
-I am interested in exploring (a) research question(s) related to the human experience of psychedelics, particularly the affective and phenomenological effects. In terms of data sources, I believe the most likely ones may be Erowid.org, https://www.psychedelicdata.io/about%3FhsLang=en.html, or Fireside Project. My main concern is getting permission to use the data, and ensuring that it passes muster with the IRB.
+Exploring the patterns of psychedelic use offers critical insights into the human experience with these substances. This study aims to compare the age of initiation and frequency of psychedelic use between urban and rural areas in the U.S. in 2021. Understanding these patterns is pivotal for grasping the broader societal and psychological impacts of psychedelics, especially given the differences in accessibility and cultural attitudes towards these substances in various settings.
 
 ## Proposal
 
 ### Research Question
-How does the age of initiation and frequency of LSD use differ between urban and rural areas in the U.S. in 2021, and how does this relate to the recency of LSD use?
+
+How do the age of initiation and frequency of psychedelic use differ between urban and rural areas in the U.S. in 2021, and how do these factors relate to the recency of use?
 
 ### Hypothesis
-Individuals in urban areas might initiate LSD use at a younger age compared to those in rural areas due to increased exposure and accessibility. Furthermore, the frequency of LSD use in the past year and the recency of its use might be influenced by the age of initiation, with earlier initiation potentially leading to more frequent and recent use.
+
+It is hypothesized that individuals in urban areas may initiate psychedelic use at a younger age than those in rural areas due to factors such as increased exposure and accessibility. Additionally, the frequency and recency of psychedelic use might correlate with the age of initiation, with earlier initiation potentially leading to more frequent use.
 
 ### Explanatory Variables of Interest:
 
 #### Geographical Location (Rural vs. Urban):
+
 Variable: RURURB00
 Description: "RURAL OR URBAN SEGMENT"
 
-#### Age of Initiation of LSD Use:
-Variable: LSDAGE
-Description: "AGE WHEN FIRST USED LSD"
-Outcome Variables of Interest:
+#### Age of Initiation of Hallucinogen Use:
 
-#### Frequency of LSD Use in the Past Year:
-Variable: LSDYR
-Description: "RC-LSD - PAST YEAR USE"
+Variable: HALLUCAGE
+Description: "AGE WHEN FIRST USED HALLUCINOGENS"
 
-#### Recency of LSD Use:
-Variable: LSDREC
-Description: "TIME SINCE LAST USED LSD"
+#### Frequency and Recency of Hallucinogen Use:
 
-### Control Variables:
+Variables: HALLUCYR (Frequency), HALLUCREC (Recency)
+Descriptions: "HALLUCINOGEN - PAST YEAR USE" and "TIME SINCE LAST USED HALLUCINOGEN"
 
-#### Ever Used LSD:
-Variable: LSDFLAG
-Description: "RC-LSD - EVER USED"
+#### Control Variables:
 
-#### Age Last Used LSD:
-Variable: LSDAGLST
-Description: "HOW OLD WERE YOU THE LAST TIME USED LSD"
-Expected Observations:
+Ever Used Hallucinogens: HALLUCFLAG
+Age Last Used Hallucinogens: HALLUCAGLST
 
-If the data reveals that individuals from urban areas initiate LSD use at a younger age and have a higher frequency of use in the past year compared to those from rural areas, it would support the hypothesis.
+### Expected Observations
 
-A significant positive relationship between the age of initiation (LSDAGE) and the recency of use (LSDREC) would suggest that earlier initiation leads to more recent use.
+If data shows that individuals from urban areas initiate hallucinogen use at a younger age with higher frequency and recency compared to those from rural areas, it would support the hypothesis.
 
 ### Statistical Analysis
-A regression analysis will be conducted with LSDYR and LSDREC as the dependent variables, and RURURB00 and LSDAGE as the main independent variables. The regression will control for ever using LSD and the age of last use. This will allow us to understand the relationship between the age of initiation, geographical location, and the frequency and recency of LSD use.
+
+A regression analysis will be conducted with frequency and recency of hallucinogen use as dependent variables, and geographical location and age of initiation as main independent variables. The regression will control for factors such as ever using hallucinogens and age of last use.
 
 ### Data Source
-The data for this study will be sourced from the ["National Survey on Drug Use and Health 2021 (NSDUH-2021-DS0001)"](https://www.datafiles.samhsa.gov/dataset/national-survey-drug-use-and-health-2021-nsduh-2021-ds0001). The [dataset's specific variables](https://www.datafiles.samhsa.gov/sites/default/files/NSDUH_files/RDAS/RDAS_Comparability.xlsx) will provide a comprehensive perspective on the research question.
 
+The data for this study is sourced from the ["National Survey on Drug Use and Health 2021 (NSDUH-2021-DS0001)"](https://www.datafiles.samhsa.gov/dataset/national-survey-drug-use-and-health-2021-nsduh-2021-ds0001).
+
+The National Survey on Drug Use and Health (NSDUH) is an annual survey conducted in the United States. It is one of the most comprehensive sources of data on substance use, including hallucinogens, and covers a wide demographic. NSDUH's methodology includes interviews with individuals aged 12 and older and spans various topics from frequency of drug use to mental health. This dataset is particularly suitable for this study as it provides detailed information on hallucinogen use patterns across different geographical locations. The richness and granularity of the data make it ideal for examining the nuances of urban and rural differences in psychedelic experiences.
+
+The [dataset's specific variables](https://www.datafiles.samhsa.gov/sites/default/files/NSDUH_files/RDAS/RDAS_Comparability.xlsx) will provide a comprehensive perspective on the research question.
+
+## Analysis
 ```{r}
 library(dplyr)
 nsduh <- load("./NSDUH_2021.RData")
@@ -75,7 +76,7 @@ nsduh
 
 ```{r}
 # PUF2021_100622
-lsd_use <- PUF2021_100622 |>
+halluc_use <- PUF2021_100622 |>
   mutate(
     metro_level = case_when(
       COUTYP4 == 1 ~ "Large Metro",
@@ -92,20 +93,10 @@ lsd_use <- PUF2021_100622 |>
     PDEN10,
     # metro/non-metro
     COUTYP4,
-    # age of first lsd age
-    lsdage,
-    # ever used lsd (1)
-    lsdflag,
-    # lsd age last use
-    lsdaglst,
-    # year of last lsd use
-    lsdylu,
-    # TIME SINCE LAST USED LSD
-    lsdrec,
-    # Ever used psilocybin
-    psilcyever,
-    # ever used psilocybin
-    psilcy,
+    # ever used hallucinogens
+    hallucflag,
+    # PAST YEAR USE (0 did not use, 1 did use)
+    hallucyr,
     # ever used hallucinogens (DMTAMTFXY, ECSTMOLLY, HALLUCOTH, KETMINESK, LSD, MESC, PCP, PEYOTE, PSILCY, SALVIADIV)
     hallucevr,
     # age of first hallucage
@@ -116,13 +107,13 @@ lsd_use <- PUF2021_100622 |>
 ```{r}
 library(tidyverse)
 ```
-#### Age of First Hallucinogen Use
-This analysis reveals that the median age of first hallucinogen use among respondents is approximately 19 years, representing the midpoint of the distribution. Approximately 25% of respondents start using hallucinogens before or at age 17 (Q1), while another quarter initiate use at or after age 21 (Q3), indicating quartile boundaries. The mean age of initiation, around 19.65 years, closely aligns with the median, implying a relatively symmetrical distribution. The histogram closely resembles a normal distribution with a slight right skew, indicating that most respondents commence using hallucinogens in their late teens or early twenties, with a smaller fraction initiating use at older ages.
+### Age of First Hallucinogen Use
+
 ```{r}
-filtered_lsd_use <- lsd_use |>
+filtered_halluc_use <- halluc_use |>
   filter(hallucage < 69)
 
-summary_stats <- filtered_lsd_use |>
+summary_stats <- filtered_halluc_use |>
   summarise(
     Median = median(hallucage),
     Q1 = quantile(hallucage, 0.25),
@@ -135,7 +126,7 @@ summary_stats <- filtered_lsd_use |>
 
 summary_stats
 
-lsd_use_plot <- filtered_lsd_use |>
+halluc_use_plot <- filtered_halluc_use |>
   ggplot(mapping = aes(x = hallucage)) +
   geom_histogram(binwidth = 1) +
   labs(
@@ -146,12 +137,14 @@ lsd_use_plot <- filtered_lsd_use |>
   geom_vline(aes(xintercept = mean(hallucage)), color = "indianred") +
   geom_vline(aes(xintercept = median(hallucage)), color = "dodgerblue")
 
-lsd_use_plot
+halluc_use_plot
 ```
-#### Age of First Hallucinogen Use by Metrolevel
-The boxplot analysis reveals variations in the age of first hallucinogen use across different metro level areas. In Large Metro areas, the median age of initiation is around 19 years, while in Non Metro and Small Metro areas, it's about 18 years. The first quartile age (25th percentile) indicates that a quarter of individuals in Non Metro areas start using hallucinogens at a younger age, at approximately 16 years, compared to the other groups. The third quartile age (75th percentile) shows that the majority in all three areas initiate use by their early twenties, with Large Metro areas slightly later at around 22 years. These findings highlight regional differences in the timing of first hallucinogen use, with individuals in Large Metro areas tending to initiate use slightly later on average.
+
+This analysis reveals that the median age of first hallucinogen use among respondents is approximately 19 years, representing the midpoint of the distribution. Approximately 25% of respondents start using hallucinogens before or at age 17 (Q1), while another quarter initiate use at or after age 21 (Q3), indicating quartile boundaries. The mean age of initiation, around 19.65 years, closely aligns with the median, implying a relatively symmetrical distribution. The histogram closely resembles a normal distribution with a slight right skew, indicating that most respondents commence using hallucinogens in their late teens or early twenties, with a smaller fraction initiating use at older ages.
+### Age of First Hallucinogen Use by Metrolevel
+
 ```{r}
-lsd_use_box_plot <- filtered_lsd_use |>
+halluc_use_box_plot <- filtered_halluc_use |>
   filter(
     hallucage < 69
   ) |>
@@ -168,9 +161,9 @@ geom_boxplot() +
     y = "Age at first Hallucinogen use (years)"
   )
 
-lsd_use_box_plot
+halluc_use_box_plot
 
-summary_stats <- lsd_use |>
+summary_stats <- halluc_use |>
   filter(hallucage < 69) |>
   group_by(metro_level) |>
   summarize(
@@ -181,31 +174,70 @@ summary_stats <- lsd_use |>
 
 summary_stats
 ```
-#### Hallucinogen lifetime use and metro level
-Whether a respondent has ever taken psychedelics (hallucevr) does not appear to have a significant impact on the type of county (COUTYP4) in which they reside. The coefficient for hallucevr is almost zero, indicating that there is virtually no association between these two variables in the model.
+The boxplot analysis reveals variations in the age of first hallucinogen use across different metro level areas. In Large Metro areas, the median age of initiation is around 19 years, while in Non Metro and Small Metro areas, it's about 18 years. The first quartile age (25th percentile) indicates that a quarter of individuals in Non Metro areas start using hallucinogens at a younger age, at approximately 16 years, compared to the other groups. The third quartile age (75th percentile) shows that the majority in all three areas initiate use by their early twenties, with Large Metro areas slightly later at around 22 years. These findings highlight regional differences in the timing of first hallucinogen use, with individuals in Large Metro areas tending to initiate use slightly later on average.
+
+### Hallucinogen lifetime use and metro level
+
 ```{r}
-fit_2 <- lm(COUTYP4 ~ hallucevr, data = lsd_use)
+fit_2 <- lm(COUTYP4 ~ hallucevr, data = halluc_use)
 
 fit_2 |>
   broom::tidy() |>
   select(term, estimate) |>  
   knitr::kable(digits = 2)
 ```
+The regression analysis exploring the impact of lifetime hallucinogen use on the type of county in which respondents reside yielded an interesting result. The coefficient for hallucevr, representing lifetime hallucinogen use, is 0.00. This implies that there is no statistically significant association between whether a respondent has ever used hallucinogens and the metro/non-metro status of their county. In other words, lifetime hallucinogen use does not appear to be a determining factor in differentiating respondents living in urban versus rural areas. This finding suggests that the use of hallucinogens is similarly prevalent across different types of geographical locations, contrary to what might be expected considering potential differences in accessibility and exposure.
+
+The intercept of the regression, at 1.73, indicates the baseline level for the dependent variable (COUTYP4), which in this context could suggest the average metro/non-metro status when hallucinogen use is not considered. However, without further context on the coding of the COUTYP4 variable, the interpretation of this intercept may vary.
+
+This result challenges common perceptions about the urban-rural divide in drug use patterns and highlights the need for a more nuanced understanding of the factors influencing hallucinogen use across different communities.
+### Age of First Hallucinogen Use and Recent Use Probability
 
 ```{r}
-metro_hall_plot <- filtered_lsd_use |>
-  group_by(metro_level) |>
-  summarize(
-    avg_hallucage = mean(hallucage)
-  ) |>
-  ggplot(mapping = aes(x = fct_reorder(metro_level, avg_hallucage), y = avg_hallucage, fill = metro_level)) +
-  geom_col() +
-  labs(
-    title = "County metro/nonmetro status level and average age of first Hallucinogen use",
-    x = "COUNTY METRO/NONMETRO STATUS (2013 3-LEVEL)",
-    y = "Average Age of respondent at first Hallucinogen use (years)"
-  )
+halluc_use_filtered <- halluc_use |>
+  filter(hallucage < 69)
 
-metro_hall_plot
+logit_model <- glm(hallucyr ~ hallucage, data = halluc_use_filtered, family = "binomial")
+
+summary(logit_model)
+
+halluc_use_filtered$predicted_prob <- predict(logit_model, type = "response")
+
+ggplot(halluc_use_filtered, aes(x = hallucage, y = predicted_prob)) +
+  geom_point() +
+  geom_smooth(
+    method = "glm",
+    method.args = list(family = "binomial")
+  ) +
+  labs(title = "Probability of Hallucinogen Use in the Past Year by Age of First Use",
+       x = "Age of First Use",
+       y = "Predicted Probability of Use in Past Year")
+
 ```
+# Analysis Overview
 
+The logistic regression model was fitted to examine the relationship between the age at first use of hallucinogens (`hallucage`) and the probability of using hallucinogens in the past year (`hallucyr`). Logistic regression was chosen for this analysis because the dependent variable, `hallucyr`, is binary (0 for did not use, 1 for did use), which aligns well with the logistic model's ability to predict the probability of a binary outcome based on an independent variable.
+
+## Regression Results
+
+### Coefficients:
+
+- **Intercept**: The intercept (`-1.386519`) represents the log odds of using hallucinogens in the past year when the age of first use (`hallucage`) is 0. This is a theoretical baseline as the age of first use cannot be zero.
+- **Age of First Use (`hallucage`)**: The coefficient for the age of first use is `0.008313`. This value indicates the change in the log odds of using hallucinogens in the past year for each additional year delay in the age of first use.
+
+### Statistical Significance:
+
+- The p-value for the age of first use is `0.0884`, marginally above the conventional threshold of `0.05` for statistical significance. This suggests a trend towards significance but does not provide strong evidence to conclusively state that the age of first hallucinogen use is a predictor of use in the past year.
+
+### Model Fit:
+
+- **Null Deviance vs. Residual Deviance**: The null deviance is reduced from `9542.2` to `9539.3` in the residual deviance with the inclusion of the `hallucage` variable, indicating that the model with the predictor provides a slightly better fit than the null model (a model with no predictors).
+- **AIC (Akaike Information Criterion)**: The AIC of the model is `9543.3`. Lower AIC values generally indicate a better model, but without a comparative model, this value serves as a baseline for model comparison.
+
+## Interpretation
+
+The positive coefficient for `hallucage` suggests that there is a slight increase in the probability of using hallucinogens in the past year with each additional year in the age of first use. However, since the result is not statistically significant at the `0.05` level, this finding should be interpreted with caution. The marginal significance indicates that while there may be a relationship between the age of first use and the likelihood of using hallucinogens in the past year, the evidence is not strong enough to make a definitive conclusion. It is possible that other factors not included in the model might influence this relationship. The relatively small change in deviance suggests that the age of first use, while potentially informative, does not strongly predict hallucinogen use in the past year by itself.
+
+# Conclusion
+
+In conclusion, this analysis provides some indication that the age at which individuals first use hallucinogens might have a marginal effect on their likelihood of using hallucinogens in the most recent year. However, the evidence is not strong enough to assert a definitive causal relationship. Further research, possibly incorporating additional variables and a larger sample size, could provide more insights into this relationship.
